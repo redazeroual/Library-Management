@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Lumina Library System - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#091426",
+                      "background": "#f8f9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#c5c6cd",
+                      "on-surface-variant": "#45474c",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "secondary": "#006c49"
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .chart-bar { transition: height 1s ease-out; }
+        /* Scrollbar personnalisée pour garder le design propre */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-slate-900 font-sans min-h-screen flex overflow-hidden">
+
+
+<aside class="w-[260px] h-screen sticky top-0 left-0 bg-white border-r border-outline-variant flex flex-col py-6 px-4">
+    <div class="mb-10 px-2">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary rounded flex items-center justify-center text-white">
+                <span class="material-symbols-outlined">library_books</span>
+            </div>
+            <div>
+                <h1 class="text-lg font-black text-primary leading-tight">Central Library</h1>
+                <p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Admin Console</p>
+            </div>
+        </div>
+    </div>
+
+    <nav class="flex-1 space-y-1">
+        <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-100 text-primary font-bold">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="text-sm">Tableau de Bord</span>
+        </a>
+        <a href="catalog.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span class="text-sm">Catalogue</span>
+        </a>
+        <a href="members.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined">group</span>
+            <span class="text-sm">Membres</span>
+        </a>
+        <a href="loans.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined">sync_alt</span>
+            <span class="text-sm">Prêts</span>
+        </a>
+    </nav>
+
+    <div class="pt-6 border-t border-outline-variant space-y-1">
+        <a href="settings.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-slate-50 transition-all">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="text-sm">Paramètres</span>
+        </a>
+        <button onclick="handleLogout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-error hover:bg-red-50 transition-all text-left">
+            <span class="material-symbols-outlined">logout</span>
+            <span class="text-sm font-medium">Déconnexion</span>
+        </button>
+    </div>
+</aside>
+
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+
+    <header class="w-full h-16 bg-white border-b border-outline-variant flex justify-between items-center px-8">
+        <div class="relative w-full max-w-md">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+            <input class="w-full pl-10 pr-4 py-2 bg-slate-50 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Rechercher..." type="text"/>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3 border-l pl-4 border-outline-variant">
+                <div class="text-right hidden sm:block">
+                    <p class="text-xs font-bold text-primary">Marie Lefebvre</p>
+                    <p class="text-[10px] text-on-surface-variant">Bibliothécaire en chef</p>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=Marie+Lefebvre&background=091426&color=fff" class="w-10 h-10 rounded-full border">
+            </div>
+        </div>
+    </header>
+
+
+    <div class="flex-1 overflow-y-auto p-8 space-y-8">
+        <div>
+            <h2 class="text-3xl font-black text-primary">Tableau de Bord</h2>
+            <p class="text-sm text-on-surface-variant">Bonjour Marie, voici un résumé de l'activité.</p>
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white border border-outline-variant rounded-xl p-6 flex items-center justify-between shadow-sm">
+                <div>
+                    <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Total Livres</p>
+                    <h3 id="stat-total-books" class="text-3xl font-black text-primary">12,450</h3>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-slate-200">book</span>
+            </div>
+            <div class="bg-white border border-outline-variant rounded-xl p-6 flex items-center justify-between shadow-sm">
+                <div>
+                    <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider mb-1">Prêts Actifs</p>
+                    <h3 id="stat-active-loans" class="text-3xl font-black text-primary">840</h3>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-slate-200">sync</span>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-xl p-6 flex items-center justify-between shadow-sm">
+                <div>
+                    <p class="text-xs font-bold text-red-600 uppercase tracking-wider mb-1">Retards</p>
+                    <h3 id="stat-overdues" class="text-3xl font-black text-red-700">12</h3>
+                </div>
+                <span class="material-symbols-outlined text-4xl text-red-200">warning</span>
+            </div>
+        </div>
+
+
+        <section>
+            <h4 class="text-sm font-bold text-primary uppercase tracking-widest mb-4">Accès Rapide</h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <a href="catalog.html" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">inventory_2</span>
+                    <span class="text-xs font-bold text-on-surface">Inventaire</span>
+                </a>
+                <a href="fines.html" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">payments</span>
+                    <span class="text-xs font-bold text-on-surface">Amendes</span>
+                </a>
+                <button onclick="startScanner()" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">barcode_scanner</span>
+                    <span class="text-xs font-bold text-on-surface">Scanner</span>
+                </button>
+                <a href="messages.html" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">mail</span>
+                    <span class="text-xs font-bold text-on-surface">Messages</span>
+                </a>
+                <a href="reservations.html" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">book_5</span>
+                    <span class="text-xs font-bold text-on-surface">Réserve</span>
+                </a>
+                <a href="reports.html" class="flex flex-col items-center gap-3 p-6 bg-white border border-outline-variant rounded-xl hover:border-primary hover:shadow-md transition-all group text-center">
+                    <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">analytics</span>
+                    <span class="text-xs font-bold text-on-surface">Rapports</span>
+                </a>
+            </div>
+        </section>
+
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-8 bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
+                <h4 class="font-bold text-lg mb-6">Popularité des Livres</h4>
+                <div class="h-64 flex items-end justify-between gap-4 border-b border-l px-4">
+                    <div class="flex-1 flex flex-col items-center gap-2">
+                        <div class="w-full max-w-[40px] bg-primary rounded-t chart-bar" style="height: 85%;"></div>
+                        <span class="text-[10px] truncate w-full text-center">1984</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-2">
+                        <div class="w-full max-w-[40px] bg-primary/80 rounded-t chart-bar" style="height: 70%;"></div>
+                        <span class="text-[10px] truncate w-full text-center">Le Cid</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-2">
+                        <div class="w-full max-w-[40px] bg-primary/60 rounded-t chart-bar" style="height: 55%;"></div>
+                        <span class="text-[10px] truncate w-full text-center">L'Étranger</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 bg-white border border-outline-variant rounded-xl p-6 shadow-sm">
+                <h4 class="font-bold text-lg mb-4">Activité</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-sm">
+                        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <p><strong>Jean D.</strong> a rendu un livre.</p>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <p>Nouveau membre inscrit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const bars = document.querySelectorAll('.chart-bar');
+        bars.forEach(bar => {
+            const h = bar.style.height;
+            bar.style.height = '0';
+            setTimeout(() => bar.style.height = h, 200);
+        });
+
+
+        // fetchStats();
+    });
+
+    function startScanner() {
+        alert("Initialisation du scanner ISBN... (Simulation)");
+        window.location.href = "loans.html?scan=true";
+    }
+
+    async function handleLogout() {
+        if (confirm("Voulez-vous vraiment vous déconnecter ?")) {
+            const response = await fetch('api/logout', { method: 'POST' });
+            if (response.ok) window.location.href = "login.html";
+        }
+    }
+</script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+
+    const bars = document.querySelectorAll('.chart-bar');
+    bars.forEach(bar => {
+        const h = bar.style.height;
+        bar.style.height = '0';
+        setTimeout(() => bar.style.height = h, 200);
+    });
+
+
+    fetchStats();
+});
+
+async function fetchStats() {
+    try {
+        const response = await fetch('api/stats');
+        const stats = await response.json();
+
+
+        document.getElementById('stat-total-books').textContent = stats.totalBooks.toLocaleString();
+        document.getElementById('stat-active-loans').textContent = stats.activeLoans.toLocaleString();
+        document.getElementById('stat-overdues').textContent = stats.overdueLoans.toLocaleString();
+
+    } catch (error) {
+        console.error("Erreur lors du chargement des stats :", error);
+    }
+}
+
+async function handleLogout() {
+    if (confirm("Voulez-vous vraiment vous déconnecter ?")) {
+        const response = await fetch('api/logout', { method: 'POST' });
+        if (response.ok) window.location.href = "login.html";
+    }
+}
+</script>
+</body>
+</html>

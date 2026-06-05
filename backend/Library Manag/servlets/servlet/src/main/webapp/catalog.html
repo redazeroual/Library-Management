@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "inverse-primary": "#bcc7de",
+                "on-secondary-fixed-variant": "#005236",
+                "on-primary-container": "#8590a6",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "background": "#f8f9ff",
+                "on-surface-variant": "#45474c",
+                "on-primary-fixed-variant": "#3c475a",
+                "on-tertiary-fixed-variant": "#653e00",
+                "secondary-fixed-dim": "#4edea3",
+                "surface-container-high": "#dce9ff",
+                "secondary-fixed": "#6ffbbe",
+                "on-secondary-container": "#00714d",
+                "outline": "#75777d",
+                "surface-tint": "#545f73",
+                "tertiary-fixed": "#ffddb8",
+                "on-background": "#0b1c30",
+                "surface-container": "#e5eeff",
+                "on-primary": "#ffffff",
+                "tertiary-container": "#3c2300",
+                "error-container": "#ffdad6",
+                "on-surface": "#0b1c30",
+                "on-tertiary-container": "#c88000",
+                "primary-fixed": "#d8e3fb",
+                "on-primary-fixed": "#111c2d",
+                "outline-variant": "#c5c6cd",
+                "tertiary-fixed-dim": "#ffb95f",
+                "tertiary": "#201100",
+                "surface-container-low": "#eff4ff",
+                "surface-container-highest": "#d3e4fe",
+                "surface": "#f8f9ff",
+                "surface-variant": "#d3e4fe",
+                "on-secondary": "#ffffff",
+                "primary": "#091426",
+                "secondary-container": "#6cf8bb",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#eaf1ff",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed": "#002113",
+                "primary-fixed-dim": "#bcc7de",
+                "surface-dim": "#cbdbf5",
+                "secondary": "#006c49",
+                "surface-bright": "#f8f9ff",
+                "inverse-surface": "#213145",
+                "primary-container": "#1e293b"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "container-max": "1440px",
+                "lg": "24px",
+                "md": "16px",
+                "gutter": "20px",
+                "sidebar-width": "260px",
+                "sm": "8px",
+                "base": "4px",
+                "xs": "4px",
+                "xl": "32px"
+              },
+              "fontFamily": {
+                "body-md": ["Inter"], "body-lg": ["Inter"], "body-sm": ["Inter"], "display-lg": ["Inter"], "headline-sm": ["Inter"], "label-bold": ["Inter"], "headline-md": ["Inter"], "label-md": ["Inter"]
+              },
+              "fontSize": {
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed-dim">
+<div class="flex min-h-screen">
+    <aside class="w-sidebar-width h-screen sticky top-0 left-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md px-sm z-50">
+        <div class="px-md mb-xl">
+            <div class="flex items-center gap-sm">
+                <div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg text-on-primary">
+                    <span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+                </div>
+                <div>
+                    <h1 class="font-headline-sm text-headline-sm font-black text-primary">Central Library</h1>
+                    <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+                </div>
+            </div>
+        </div>
+        <nav class="flex-1 flex flex-col gap-xs">
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="index.html">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg bg-surface-container text-primary font-bold transition-all duration-200 font-label-md text-label-md" href="catalog.html">
+                <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                <span>Catalog</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="members.html">
+                <span class="material-symbols-outlined" data-icon="group">group</span>
+                <span>Members</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="loans.html">
+                <span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+                <span>Loans</span>
+            </a>
+            <div class="mt-md px-md">
+                <button class="w-full bg-primary text-on-primary font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs hover:opacity-90 active:opacity-80 transition-all" onclick="document.getElementById('add-book-modal').classList.remove('hidden')">
+                    <span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    <span>New Transaction</span>
+                </button>
+            </div>
+        </nav>
+        <div class="mt-auto border-t border-outline-variant pt-md flex flex-col gap-xs">
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span>Settings</span>
+            </a>
+            <button onclick="handleLogout()" class="w-full flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out text-left cursor-pointer">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col min-w-0">
+        <header class="h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg w-full z-40">
+            <div class="flex items-center gap-md flex-1">
+                <div class="relative w-full max-w-md">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+                    <input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary placeholder:text-on-primary-container" placeholder="Rechercher par titre, auteur ou ISBN..." type="text"/>
+                </div>
+            </div>
+            <div class="flex items-center gap-lg">
+                <div class="flex items-center gap-sm">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant relative">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface-container-lowest"></span>
+                    </button>
+                </div>
+                <div class="h-8 w-[1px] bg-outline-variant"></div>
+                <div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container px-2 py-1 rounded-lg transition-colors">
+                    <div class="text-right hidden sm:block">
+                        <p class="font-label-bold text-label-bold text-on-surface">M. Durand</p>
+                        <p class="font-label-md text-label-md text-on-surface-variant">Bibliothécaire</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="p-lg overflow-y-auto custom-scrollbar">
+            <div class="max-w-7xl mx-auto space-y-lg">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+                    <div>
+                        <h2 class="font-display-lg text-display-lg text-primary">Gestion du Catalogue</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant mt-1">Gérez et suivez la disponibilité de votre collection de livres.</p>
+                    </div>
+                    <button class="bg-primary text-on-primary px-lg py-md rounded-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all shadow-sm" onclick="document.getElementById('add-book-modal').classList.remove('hidden')">
+                        <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Ajouter un livre
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+                    <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+                        <p class="font-label-md text-label-md text-on-surface-variant mb-1">Total Titres</p>
+                        <div class="flex items-end justify-between">
+                            <span class="font-display-lg text-display-lg text-primary">12,450</span>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+                        <p class="font-label-md text-label-md text-on-surface-variant mb-1">Disponible</p>
+                        <span class="font-display-lg text-display-lg text-on-secondary-container">9,120</span>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+                        <p class="font-label-md text-label-md text-on-surface-variant mb-1">Empruntés</p>
+                        <span class="font-display-lg text-display-lg text-on-tertiary-container">3,330</span>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+                        <p class="font-label-md text-label-md text-on-surface-variant mb-1">En Retard</p>
+                        <span class="font-display-lg text-display-lg text-error">142</span>
+                    </div>
+                </div>
+
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-surface-container-lowest sticky top-0">
+                            <tr class="border-b border-outline-variant">
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant w-12">
+                                    <input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+                                </th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Titre</th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Auteur</th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">ISBN</th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Genre</th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Status</th>
+                                <th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant text-right">Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="bookTableBody" class="divide-y divide-outline-variant">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] hidden overflow-y-auto" id="add-book-modal" role="dialog">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div aria-hidden="true" class="fixed inset-0 bg-primary/40 backdrop-blur-sm transition-opacity" onclick="document.getElementById('add-book-modal').classList.add('hidden')"></div>
+        <span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+        <div class="inline-block align-bottom bg-surface-container-lowest rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-outline-variant">
+            <div class="bg-surface-container-lowest px-lg pt-lg pb-md">
+                <div class="flex items-center justify-between mb-lg">
+                    <h3 class="font-headline-sm text-headline-sm text-primary" id="modal-title">Nouveau Livre</h3>
+                    <button class="text-on-surface-variant hover:text-error transition-colors" onclick="document.getElementById('add-book-modal').classList.add('hidden')">
+                        <span class="material-symbols-outlined" data-icon="close">close</span>
+                    </button>
+                </div>
+                <form class="space-y-md" id="book-form">
+                    <div class="space-y-1">
+                        <label class="font-label-bold text-label-bold text-on-surface-variant" for="titre">Titre</label>
+                        <input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary text-body-md py-sm" id="titre" name="titre" placeholder="ex: Les Misérables" type="text"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        loadBooks();
+    });
+
+    function loadBooks() {
+
+        fetch('api/books')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erreur réseau de la Servlet");
+                }
+                return response.json();
+            })
+            .then(books => {
+                const tableBody = document.querySelector("#bookTableBody");
+                tableBody.innerHTML = "";
+
+                books.forEach(book => {
+
+                    let title = book.title || book.titre || "Sans titre";
+                    let author = book.author || book.auteur || "Inconnu";
+                    let genre = book.genre || "Général";
+                    let isbn = book.isbn || "-";
+                    let status = book.status || book.statut || "Disponible";
+
+
+                    let statusBadge = (status === 'Disponible')
+                        ? `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Disponible</span>`
+                        : `<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>Emprunté</span>`;
+
+                    let row = `
+                        <tr class="hover:bg-surface-container-low transition-colors group">
+                            <td class="px-md py-md"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+                            <td class="px-md py-md">
+                                <div class="flex items-center gap-md">
+                                    <span class="font-label-bold text-body-md text-primary">${title}</span>
+                                </div>
+                            </td>
+                            <td class="px-md py-md font-body-md text-on-surface">${author}</td>
+                            <td class="px-md py-md font-body-sm text-on-surface-variant">${isbn}</td>
+                            <td class="px-md py-md"><span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-primary">${genre}</span></td>
+                            <td class="px-md py-md">${statusBadge}</td>
+                            <td class="px-md py-md text-right">
+                                <button onclick="editBook(${book.id})" class="text-on-surface-variant hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error('Erreur Stitch Frontend :', error));
+    }
+
+    function editBook(id) {
+        console.log("Action : Modification du livre ID =", id);
+    }
+    async function handleLogout() {
+
+    if (!confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch('api/logout', {
+            method: 'POST'
+        });
+
+        if (response.ok) {
+
+            window.location.href = "login.html";
+        } else {
+            alert("Une erreur est survenue lors de la déconnexion.");
+        }
+    } catch (error) {
+        console.error("Erreur réseau lors de la déconnexion :", error);
+        alert("Impossible de joindre le serveur pour se déconnecter.");
+    }
+}
+</script>
+</body>
+</html>

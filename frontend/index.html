@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Library System - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#bcc7de",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-primary-container": "#8590a6",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f8f9ff",
+                    "on-surface-variant": "#45474c",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-secondary-container": "#00714d",
+                    "outline": "#75777d",
+                    "surface-tint": "#545f73",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-background": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#3c2300",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-container": "#c88000",
+                    "primary-fixed": "#d8e3fb",
+                    "on-primary-fixed": "#111c2d",
+                    "outline-variant": "#c5c6cd",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "tertiary": "#201100",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "primary": "#091426",
+                    "secondary-container": "#6cf8bb",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#002113",
+                    "primary-fixed-dim": "#bcc7de",
+                    "surface-dim": "#cbdbf5",
+                    "secondary": "#006c49",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#1e293b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "gutter": "20px",
+                    "sidebar-width": "260px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "code-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .chart-bar { transition: height 1s ease-out; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="w-sidebar-width h-screen sticky top-0 left-0 bg-surface-container-lowest dark:bg-primary border-r border-outline-variant dark:border-outline flex flex-col h-full py-md px-sm">
+<div class="mb-xl px-sm">
+<div class="flex items-center gap-sm mb-base">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="library_books">library_books</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary dark:text-primary-fixed leading-tight">Central Library</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-base overflow-y-auto px-sm">
+<!-- Active State: Dashboard -->
+<a class="flex items-center gap-md px-md py-sm rounded bg-surface-container dark:bg-primary-container text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="index.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="members.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Members</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="loans.html">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="font-label-md text-label-md">Loans</span>
+</a>
+</nav>
+<div class="px-sm mb-lg">
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-label-bold flex items-center justify-center gap-xs hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Nouvelle Transaction
+            </button>
+</div>
+<div class="px-sm pt-md border-t border-outline-variant space-y-base">
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded text-on-surface-variant dark:text-on-primary-container hover:bg-surface-container-low dark:hover:bg-on-primary-fixed-variant transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar -->
+<header class="w-full h-16 bg-surface-container-lowest dark:bg-primary border-b border-outline-variant dark:border-outline flex justify-between items-center px-lg">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-body-md focus:ring-1 focus:ring-primary" placeholder="Rechercher des livres, auteurs ou membres..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container dark:hover:bg-primary-container transition-colors relative">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container dark:hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-sm">
+<img alt="Librarian Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a librarian with a warm smile, wearing modern glasses and a smart-casual blazer. The background is a soft-focus library aisle with organized book spines, using a clean corporate lighting and cool-toned color grading to match the professional LMS interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwXRtMsdQhj500glqVo-sCphwBTfwSdirpibFsd3GPXZlLWaQpmzSvYpdDBbelxCNdLfn2jnbQkt6h4gN-ZeFBV_ph6Bp2LCEJIkC1EcNAA0-qNa6-hyKtHFug1nOyVw_J3vz07MFUnbwGPJ98JUOBYR4QvPpNArmYKgAmqOiR9RC1SH9Z4Pl0y9obUtL93rY0RkibP1dkMEj5jhzEh2ZWoBKwqjd1Ln0swMLDn4UCkutqgZmPjR-m3JfC8wSUFP5SMkeGMtHJk-Y"/>
+<div class="hidden lg:block text-right">
+<p class="font-label-bold text-on-surface text-xs leading-none">Marie Lefebvre</p>
+<p class="font-label-md text-on-surface-variant text-[10px]">Bibliothécaire en chef</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-lg space-y-lg">
+<header>
+<h2 class="font-display-lg text-display-lg text-on-background">Tableau de Bord</h2>
+<p class="font-body-md text-on-surface-variant">Bienvenue, Marie. Voici l'état de votre collection aujourd'hui.</p>
+</header>
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Total Books -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex items-center justify-between group hover:border-primary transition-all">
+<div>
+<p class="font-label-md text-on-surface-variant mb-xs">Total Livres</p>
+<h3 class="font-display-lg text-display-lg leading-none">12,450</h3>
+<p class="text-secondary text-[11px] font-label-bold mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                            +12 ce mois
+                        </p>
+</div>
+<div class="p-md bg-surface-container rounded-full text-primary group-hover:bg-primary-container group-hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="book">book</span>
+</div>
+</div>
+<!-- Active Loans -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex items-center justify-between group hover:border-primary transition-all">
+<div>
+<p class="font-label-md text-on-surface-variant mb-xs">Prêts Actifs</p>
+<h3 class="font-display-lg text-display-lg leading-none">840</h3>
+<p class="text-on-surface-variant text-[11px] font-label-bold mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+                            92% du quota
+                        </p>
+</div>
+<div class="p-md bg-surface-container rounded-full text-primary group-hover:bg-primary-container group-hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="sync">sync</span>
+</div>
+</div>
+<!-- Critical Overdues -->
+<div class="bg-error-container border border-error rounded-xl p-lg flex items-center justify-between group transition-all">
+<div>
+<p class="font-label-md text-error mb-xs">Retards Critiques</p>
+<h3 class="font-display-lg text-display-lg text-on-error-container leading-none">12</h3>
+<p class="text-error text-[11px] font-label-bold mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+                            Action requise
+                        </p>
+</div>
+<div class="p-md bg-error text-on-error rounded-full shadow-lg">
+<span class="material-symbols-outlined text-3xl" data-icon="priority_high">priority_high</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Body -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Most Popular Books (Chart) -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col">
+<div class="flex justify-between items-center mb-xl">
+<h4 class="font-headline-sm text-headline-sm">Livres les Plus Populaires</h4>
+<div class="flex gap-sm">
+<button class="px-sm py-base text-[11px] font-label-bold rounded-lg border border-outline-variant hover:bg-surface-container transition-colors">7 Jours</button>
+<button class="px-sm py-base text-[11px] font-label-bold rounded-lg bg-primary text-on-primary">30 Jours</button>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-gutter pt-lg px-md h-64 border-b border-l border-outline-variant">
+<!-- Chart Bar 1 -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full max-w-[40px] bg-primary rounded-t-lg chart-bar" style="height: 90%;"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant truncate w-full text-center">Le Petit Prince</span>
+</div>
+<!-- Chart Bar 2 -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full max-w-[40px] bg-primary/80 rounded-t-lg chart-bar" style="height: 75%;"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant truncate w-full text-center">L'Étranger</span>
+</div>
+<!-- Chart Bar 3 -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full max-w-[40px] bg-primary/60 rounded-t-lg chart-bar" style="height: 60%;"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant truncate w-full text-center">Les Misérables</span>
+</div>
+<!-- Chart Bar 4 -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full max-w-[40px] bg-primary/40 rounded-t-lg chart-bar" style="height: 45%;"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant truncate w-full text-center">Germinal</span>
+</div>
+<!-- Chart Bar 5 -->
+<div class="flex-1 flex flex-col items-center gap-sm">
+<div class="w-full max-w-[40px] bg-primary/20 rounded-t-lg chart-bar" style="height: 30%;"></div>
+<span class="font-label-md text-[10px] text-on-surface-variant truncate w-full text-center">Antigone</span>
+</div>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<h4 class="font-headline-sm text-headline-sm mb-lg">Activité Récente</h4>
+<div class="space-y-md">
+<!-- Activity Item 1 -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center flex-shrink-0 text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-label-bold leading-tight">Retour : "Madame Bovary"</p>
+<p class="text-[11px] text-on-surface-variant">Rendu par Jean Dupont • Il y a 5 min</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined" data-icon="outbound">outbound</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-label-bold leading-tight">Emprunt : "1984"</p>
+<p class="text-[11px] text-on-surface-variant">Prêté à Sophie Martin • Il y a 12 min</p>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center flex-shrink-0 text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-label-bold leading-tight">Nouvel Adhérent</p>
+<p class="text-[11px] text-on-surface-variant">Lucas Morel vient de s'inscrire • Il y a 1h</p>
+</div>
+</div>
+<!-- Activity Item 4 -->
+<div class="flex gap-md p-sm rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center flex-shrink-0 text-error">
+<span class="material-symbols-outlined" data-icon="report">report</span>
+</div>
+<div class="flex-1">
+<p class="text-body-sm font-label-bold leading-tight">Livre Endommagé</p>
+<p class="text-[11px] text-on-surface-variant">Signalé sur "Le Cid" • Il y a 2h</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-lg text-[11px] font-label-bold text-primary hover:underline">Voir tous les rapports</button>
+</div>
+</div>
+<!-- Bottom Section: Quick Access -->
+<section class="space-y-md pb-lg">
+<h4 class="font-headline-sm text-headline-sm">Accès Rapide</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-md">
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+<span class="text-[11px] font-label-bold text-on-surface">Inventaire</span>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+<span class="text-[11px] font-label-bold text-on-surface">Amendes</span>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="barcode_scanner">barcode_scanner</span>
+<span class="text-[11px] font-label-bold text-on-surface">Scanner</span>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
+<span class="text-[11px] font-label-bold text-on-surface">Messages</span>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="auto_stories">auto_stories</span>
+<span class="text-[11px] font-label-bold text-on-surface">Réserve</span>
+</button>
+<button class="flex flex-col items-center gap-sm p-lg bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<span class="text-[11px] font-label-bold text-on-surface">Rapports</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<script>
+        // Micro-interaction for chart animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

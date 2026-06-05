@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Central Library - Inscription</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#091426",
+                        "background": "#f8f9ff",
+                        "surface-lowest": "#ffffff",
+                        "outline-variant": "#c5c6cd",
+                        "on-surface-variant": "#45474c",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "success": "#1a73e8"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-primary flex items-center justify-center min-h-screen p-6">
+
+<div class="w-full max-w-md bg-surface-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+    <div class="flex flex-col items-center text-center mb-6">
+        <div class="w-12 h-12 bg-primary rounded flex items-center justify-center text-white mb-3 shadow-md">
+            <span class="material-symbols-outlined text-[28px]">person_add</span>
+        </div>
+        <h1 class="text-2xl font-black tracking-tight text-primary">Créer un compte</h1>
+        <p class="text-sm text-on-surface-variant mt-1">Rejoignez l'équipe de gestion</p>
+    </div>
+
+
+    <div id="statusMessage" class="hidden p-3 rounded-lg flex items-start gap-3 mb-6 border">
+        <span id="statusIcon" class="material-symbols-outlined text-[20px] pt-0.5"></span>
+        <span class="text-xs font-medium" id="statusText"></span>
+    </div>
+
+    <form id="signupForm" class="space-y-4">
+
+        <div>
+            <label for="fullName" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5">Nom Complet</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">badge</span>
+                <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="ex: Marie Lefebvre"
+                        class="w-full bg-background border border-outline-variant rounded-lg py-2.5 pl-10 pr-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        required
+                />
+            </div>
+        </div>
+
+
+        <div>
+            <label for="username" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5">Identifiant unique</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">person</span>
+                <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="ex: marie.l"
+                        class="w-full bg-background border border-outline-variant rounded-lg py-2.5 pl-10 pr-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        required
+                />
+            </div>
+        </div>
+
+        <div>
+            <label for="password" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5">Mot de passe</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">lock</span>
+                <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="••••••••"
+                        class="w-full bg-background border border-outline-variant rounded-lg py-2.5 pl-10 pr-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        required
+                />
+            </div>
+        </div>
+
+
+        <div>
+            <label for="confirmPassword" class="block text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-1.5">Confirmer le mot de passe</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">check_circle</span>
+                <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="••••••••"
+                        class="w-full bg-background border border-outline-variant rounded-lg py-2.5 pl-10 pr-4 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        required
+                />
+            </div>
+        </div>
+
+        <button
+                type="submit"
+                id="submitBtn"
+                class="w-full bg-primary text-white py-3 rounded-lg font-semibold text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2 mt-6 shadow-sm"
+        >
+            <span>Créer mon compte</span>
+            <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+        </button>
+    </form>
+
+    <div class="mt-8 text-center">
+        <p class="text-xs text-on-surface-variant">
+            Vous avez déjà un compte ?
+            <a href="login.html" class="text-primary font-bold hover:underline ml-1">Se connecter</a>
+        </p>
+    </div>
+
+    <p class="text-center text-[10px] text-on-surface-variant mt-8 border-t border-outline-variant pt-4 uppercase tracking-widest">
+        &copy; 2026 Central Library. Security Portal.
+    </p>
+</div>
+
+<script>
+    document.getElementById('signupForm').addEventListener('submit', async function handleSignup(e) {
+        e.preventDefault();
+
+        const statusMessage = document.getElementById('statusMessage');
+        const statusText = document.getElementById('statusText');
+        const statusIcon = document.getElementById('statusIcon');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+
+        if (password !== confirmPassword) {
+            showStatus("Les mots de passe ne correspondent pas.", "error");
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span>Création en cours...</span>`;
+
+        const formData = new URLSearchParams(new FormData(e.target));
+
+        try {
+
+            const response = await fetch('api/register', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                showStatus("Compte créé avec succès ! Redirection...", "success");
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            } else {
+                const errorData = await response.json();
+                showStatus(errorData.message || "Erreur lors de l'inscription.", "error");
+            }
+        } catch (error) {
+            showStatus("Erreur de connexion au serveur.", "error");
+        } finally {
+            if (!statusMessage.classList.contains('bg-blue-100')) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Créer mon compte</span><span class="material-symbols-outlined text-[18px]">how_to_reg</span>`;
+            }
+        }
+
+        function showStatus(message, type) {
+            statusMessage.classList.remove('hidden', 'bg-error-container', 'text-error', 'border-red-200', 'bg-blue-50', 'text-blue-700', 'border-blue-200');
+            statusText.textContent = message;
+
+            if (type === "error") {
+                statusMessage.classList.add('bg-error-container', 'text-error', 'border-red-200');
+                statusIcon.textContent = "error";
+            } else {
+                statusMessage.classList.add('bg-blue-50', 'text-blue-700', 'border-blue-200');
+                statusIcon.textContent = "check_circle";
+            }
+            statusMessage.classList.remove('hidden');
+        }
+    });
+</script>
+</body>
+</html>

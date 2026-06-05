@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for high-density tables */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "inverse-primary": "#bcc7de",
+                "on-secondary-fixed-variant": "#005236",
+                "on-primary-container": "#8590a6",
+                "error": "#ba1a1a",
+                "on-tertiary": "#ffffff",
+                "background": "#f8f9ff",
+                "on-surface-variant": "#45474c",
+                "on-primary-fixed-variant": "#3c475a",
+                "on-tertiary-fixed-variant": "#653e00",
+                "secondary-fixed-dim": "#4edea3",
+                "surface-container-high": "#dce9ff",
+                "secondary-fixed": "#6ffbbe",
+                "on-secondary-container": "#00714d",
+                "outline": "#75777d",
+                "surface-tint": "#545f73",
+                "tertiary-fixed": "#ffddb8",
+                "on-background": "#0b1c30",
+                "surface-container": "#e5eeff",
+                "on-primary": "#ffffff",
+                "tertiary-container": "#3c2300",
+                "error-container": "#ffdad6",
+                "on-surface": "#0b1c30",
+                "on-tertiary-container": "#c88000",
+                "primary-fixed": "#d8e3fb",
+                "on-primary-fixed": "#111c2d",
+                "outline-variant": "#c5c6cd",
+                "tertiary-fixed-dim": "#ffb95f",
+                "tertiary": "#201100",
+                "surface-container-low": "#eff4ff",
+                "surface-container-highest": "#d3e4fe",
+                "surface": "#f8f9ff",
+                "surface-variant": "#d3e4fe",
+                "on-secondary": "#ffffff",
+                "primary": "#091426",
+                "secondary-container": "#6cf8bb",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#eaf1ff",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed": "#002113",
+                "primary-fixed-dim": "#bcc7de",
+                "surface-dim": "#cbdbf5",
+                "secondary": "#006c49",
+                "surface-bright": "#f8f9ff",
+                "inverse-surface": "#213145",
+                "on-secondary": "#ffffff",
+                "primary-container": "#1e293b"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "container-max": "1440px",
+                "lg": "24px",
+                "md": "16px",
+                "gutter": "20px",
+                "sidebar-width": "260px",
+                "sm": "8px",
+                "base": "4px",
+                "xs": "4px",
+                "xl": "32px"
+              },
+              "fontFamily": {
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "body-sm": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-sm": ["Inter"],
+                "label-bold": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-md": ["Inter"]
+              },
+              "fontSize": {
+                "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed-dim">
+<div class="flex min-h-screen">
+<!-- Side Navigation Bar -->
+<aside class="w-sidebar-width h-screen sticky top-0 left-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md px-sm z-50 transition-all duration-200 ease-in-out">
+<div class="px-md mb-xl">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg text-on-primary">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Central Library</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<!-- Dashboard -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="index.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Catalog (ACTIVE) -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-surface-container text-primary font-bold transition-all duration-200 font-label-md text-label-md" href="catalog.html">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span>Catalog</span>
+</a>
+<!-- Members -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="members.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Members</span>
+</a>
+<!-- Loans -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="loans.html">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span>Loans</span>
+</a>
+<div class="mt-md px-md">
+<button class="w-full bg-primary text-on-primary font-bold py-sm px-md rounded-lg flex items-center justify-center gap-xs hover:opacity-90 active:opacity-80 transition-all" onclick="document.getElementById('add-book-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New Transaction</span>
+</button>
+</div>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-md flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top App Bar -->
+<header class="h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg w-full z-40">
+<div class="flex items-center gap-md flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary placeholder:text-on-primary-container" placeholder="Rechercher par titre, auteur ou ISBN..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface-container-lowest"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container px-2 py-1 rounded-lg transition-colors">
+<div class="text-right hidden sm:block">
+<p class="font-label-bold text-label-bold text-on-surface">M. Durand</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Bibliothécaire</p>
+</div>
+<img alt="Librarian Profile" class="w-9 h-9 rounded-full bg-surface-container-high object-cover" data-alt="A professional studio portrait of a librarian in a modern library setting with soft focus books in the background. The lighting is bright and airy, creating a professional yet welcoming atmosphere that matches a clean, academic light-mode UI design. The color palette is composed of soft blues, whites, and natural skin tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPg04tpKX6suUH9V8uOtj47Cetjv_XhNSRxZaEFSHCJ-R6RRXlM7YYYxkfo8ofpByaHlJJbLM7vmrtC5Uw0qeZngnMdA6Q4XM_XDsnoW0nJaw8OdG40mLWa49KdJEm9O4nAWWXRjidgIwD3AYWnFp4hFvJpM4gcVvLcbkZqoSBmlZkZGSmNkGr0mK2esU1Fq6M4xSZlbkfWyh35WrdkHOBO7tjW-sXH12oR03iWhh8g5yq1d38fLMbjjkPFTAGoHoSSbuU5xifA7c"/>
+</div>
+</div>
+</header>
+<!-- Catalog Content -->
+<section class="p-lg overflow-y-auto custom-scrollbar">
+<div class="max-w-7xl mx-auto space-y-lg">
+<!-- Page Header & Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-display-lg text-display-lg text-primary">Gestion du Catalogue</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Gérez et suivez la disponibilité de votre collection de livres.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all shadow-sm" onclick="document.getElementById('add-book-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                            Ajouter un livre
+                        </button>
+</div>
+<!-- Statistics Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Total Titres</p>
+<div class="flex items-end justify-between">
+<span class="font-display-lg text-display-lg text-primary">12,450</span>
+<span class="text-secondary font-label-bold text-label-bold flex items-center">+12% <span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span></span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Disponible</p>
+<span class="font-display-lg text-display-lg text-on-secondary-container">9,120</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Empruntés</p>
+<span class="font-display-lg text-display-lg text-on-tertiary-container">3,330</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">En Retard</p>
+<span class="font-display-lg text-display-lg text-error">142</span>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-md py-sm bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-label-bold text-label-bold text-primary uppercase tracking-wider">Inventaire des Livres</h3>
+<div class="flex items-center gap-sm">
+<button class="p-1 hover:bg-surface-container rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-1 hover:bg-surface-container rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-lowest sticky top-0">
+<tr class="border-b border-outline-variant">
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant w-12">
+<input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Titre</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Auteur</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">ISBN</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Genre</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant">Status</th>
+<th class="px-md py-md font-label-bold text-label-bold text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-12 bg-surface-container-high rounded-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Book Cover" class="object-cover w-full h-full" data-alt="A minimalist book cover design for a classic novel, featuring elegant typography on a deep textured paper background. The design is scholarly and sophisticated, utilizing a monochromatic blue palette with gold foil accents. The visual style is modern academic, perfectly suited for a high-end library management system UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIu0As0FDN0biuV4ELASwhO9sk6xG8aORg0-sKauNykq4fvzul97fA8M21u75KwDlP8Aurldl4EAmL2_-eoWYl1C_kQRfhwcCwkZsHHGGBE2qy4TSY2eeLajNGnUZl2H6BHW7u5SdzUhH4sAauGrpUSEfegcMO5G1GLA_jAHe2531b24XfXBuOsbG3Bcfi1NRMc4Cyi5y2KYSK4_lwatoEhFGKuVsf8k8q3pGasxVqN3r-cKzxWFzB8zJcGyHu9XEks3qkKhdqqf0"/>
+</div>
+<span class="font-label-bold text-body-md text-primary">Le Petit Prince</span>
+</div>
+</td>
+<td class="px-md py-md font-body-md text-on-surface">Antoine de Saint-Exupéry</td>
+<td class="px-md py-md font-body-sm text-on-surface-variant">978-2070612758</td>
+<td class="px-md py-md"><span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-primary">Classique</span></td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                                Disponible
+                                            </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-12 bg-surface-container-high rounded-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Book Cover" class="object-cover w-full h-full" data-alt="A vibrant book cover design for a science fiction novel, showing abstract geometric patterns representing space and time. The lighting is dramatic and cinematic, with deep shadows and glowing neon accents. The aesthetic is contemporary and clean, designed for a professional digital library interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_tk3siYfSKd_dkLPYrHLzZukQhKcfFQn4GVF71UJgqCqw97bYV-SuaZwbvLjb8Zv-atrzqCtz7AnMejxx7WR6bwI0iIjleJOTXIlyclyQJlgnH4fwpusxf6HDCAWiJltBm9R3XWk9z6bHRwAbwG0guCzNJct9j0NuT9v7qfn_yeFzCH4fSAWBMH4_0cf8545pgxpCNDlxjDCkUd6v7Qx0FW9c9P7khZwB-VC7-Hb33QvG6ixDNu7StzlmyVjr-Rl6plc2aphvZiE"/>
+</div>
+<span class="font-label-bold text-body-md text-primary">1984</span>
+</div>
+</td>
+<td class="px-md py-md font-body-md text-on-surface">George Orwell</td>
+<td class="px-md py-md font-body-sm text-on-surface-variant">978-0451524935</td>
+<td class="px-md py-md"><span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-primary">Dystopie</span></td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+                                                Emprunté
+                                            </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-12 bg-surface-container-high rounded-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Book Cover" class="object-cover w-full h-full" data-alt="A minimalist and modern book cover for a business leadership book. The design features bold, clean san-serif typography on a crisp white background with a single architectural element. The overall feel is professional, authoritative, and sophisticated, aligning with the Lumina Library System's scholarly brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGite80dBYcroPxRPWPCL-ScQBE_CH95Z7wpXF-KUR5YK7kURXQuWDJ4TLWQoCbr5aeTyZ4jDFrmJTtzxfno9jtg38ycJRkMkLb0AXaFLRsss1KbRU999lm7Y_JxF6GbL1aPG1v4HC8TSjY_xlrI44yVp3WfZurVhs9SexlfUbkAA9xyGi0XI-TR4VgNtOr7JYCHgwSB6D3_uzEo-XY3Wcs2kdNKyekIMlisl4kjaot13s1Xb0e1_2eDHMsNwVsqhU1TYs40B8qk8"/>
+</div>
+<span class="font-label-bold text-body-md text-primary">L'Alchimiste</span>
+</div>
+</td>
+<td class="px-md py-md font-body-md text-on-surface">Paulo Coelho</td>
+<td class="px-md py-md font-body-sm text-on-surface-variant">978-2290004449</td>
+<td class="px-md py-md"><span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-primary">Philosophie</span></td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                                Disponible
+                                            </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-md py-md"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="px-md py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-12 bg-surface-container-high rounded-sm flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img alt="Book Cover" class="object-cover w-full h-full" data-alt="An elegant book cover for a historical biography, showcasing a subtle, aged parchment texture and classical serif fonts. The color scheme is a mix of muted earthy tones and deep charcoals, creating a sense of history and importance. The lighting is soft and directional, highlighting the texture of the cover." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI8u4aSG7WJDIXFRCT6QWKETG_Du75mxYaN_nfj3eXg0kyPG5gcTU-Bg2GLQlqzYEEvv2ShGLTFnUiqknK7lC1ATIMpoUJSrpuLMPzHXWIXU76qcXEYcsZpvqWsjXBuE8HBq-xTzdsFNFLufD4nOiLI7013CDzOKFhEjhiT6LTGNUObsrLuOuef_BTV9lw0LJ91umGLg21iC83PSPcvCBNWshgQgoIA_JkpVMly74trwGf5K9yQpW_tO0BKlnbdd6m_LvOL3qr-Sg"/>
+</div>
+<span class="font-label-bold text-body-md text-primary">L'Étranger</span>
+</div>
+</td>
+<td class="px-md py-md font-body-md text-on-surface">Albert Camus</td>
+<td class="px-md py-md font-body-sm text-on-surface-variant">978-2070360024</td>
+<td class="px-md py-md"><span class="px-2 py-0.5 bg-surface-container-high rounded text-xs text-primary">Littérature</span></td>
+<td class="px-md py-md">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>
+                                                Emprunté
+                                            </span>
+</td>
+<td class="px-md py-md text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-md py-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<span class="font-body-sm text-on-surface-variant">Affichage de 1-10 sur 12,450 livres</span>
+<div class="flex items-center gap-sm">
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant text-xs">Précédent</button>
+<button class="px-3 py-1 rounded border border-outline-variant bg-primary text-on-primary text-xs">1</button>
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant text-xs">2</button>
+<button class="px-3 py-1 rounded border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant text-xs">Suivant</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Modal: Ajouter un livre -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-[100] hidden overflow-y-auto" id="add-book-modal" role="dialog">
+<div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+<!-- Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-primary/40 backdrop-blur-sm transition-opacity" onclick="document.getElementById('add-book-modal').classList.add('hidden')"></div>
+<span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+<div class="inline-block align-bottom bg-surface-container-lowest rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-outline-variant">
+<div class="bg-surface-container-lowest px-lg pt-lg pb-md">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-sm text-headline-sm text-primary" id="modal-title">Nouveau Livre</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors" onclick="document.getElementById('add-book-modal').classList.add('hidden')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<form class="space-y-md" id="book-form">
+<div class="space-y-1">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="titre">Titre</label>
+<input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary text-body-md py-sm" id="titre" name="titre" placeholder="ex: Les Misérables" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-1">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="auteur">Auteur</label>
+<input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary text-body-md py-sm" id="auteur" name="auteur" placeholder="ex: Victor Hugo" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="genre">Genre</label>
+<select class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary text-body-md py-sm" id="genre" name="genre">
+<option value="">Choisir...</option>
+<option value="classique">Classique</option>
+<option value="roman">Roman</option>
+<option value="science-fiction">SF</option>
+<option value="historique">Historique</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-bold text-label-bold text-on-surface-variant" for="isbn">ISBN</label>
+<div class="relative">
+<input class="w-full border-outline-variant rounded-lg focus:ring-primary focus:border-primary text-body-md py-sm pr-10" id="isbn" name="isbn" placeholder="978-XXXXXXXXXX" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant cursor-pointer hover:text-primary" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+</div>
+</form>
+</div>
+<div class="bg-surface-container-low px-lg py-md flex flex-row-reverse gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-bold hover:opacity-90 transition-all" onclick="document.getElementById('add-book-modal').classList.add('hidden')" type="button">
+                        Enregistrer le livre
+                    </button>
+<button class="text-on-surface-variant font-bold px-lg py-sm hover:bg-surface-container transition-all rounded-lg" onclick="document.getElementById('add-book-modal').classList.add('hidden')" type="button">
+                        Annuler
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for row selection highlighting
+        const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const row = this.closest('tr');
+                if (this.checked) {
+                    row.classList.add('bg-surface-container-high');
+                } else {
+                    row.classList.remove('bg-surface-container-high');
+                }
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('shadow-md');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('shadow-md');
+        });
+    </script>
+</body></html>

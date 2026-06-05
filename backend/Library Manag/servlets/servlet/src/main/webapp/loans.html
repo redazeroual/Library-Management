@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#bcc7de",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-container": "#8590a6",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "on-surface-variant": "#45474c",
+                        "on-primary-fixed-variant": "#3c475a",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-container": "#00714d",
+                        "outline": "#75777d",
+                        "surface-tint": "#545f73",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-background": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#3c2300",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary-container": "#c88000",
+                        "primary-fixed": "#d8e3fb",
+                        "on-primary-fixed": "#111c2d",
+                        "outline-variant": "#c5c6cd",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "tertiary": "#201100",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "primary": "#091426",
+                        "secondary-container": "#6cf8bb",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#002113",
+                        "primary-fixed-dim": "#bcc7de",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#006c49",
+                        "surface-bright": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1e293b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "20px",
+                        "sidebar-width": "260px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "code-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "code-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-bold": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex min-h-screen">
+    <aside class="w-sidebar-width h-screen sticky top-0 left-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col h-full py-md px-sm">
+        <div class="px-md mb-xl">
+            <div class="flex items-center gap-sm mb-base">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-on-primary">
+                    <span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+                </div>
+                <span class="font-headline-sm text-headline-sm font-black text-primary">Central Library</span>
+            </div>
+            <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+        </div>
+        <nav class="flex-1 space-y-base">
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="index.html">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="catalog.html">
+                <span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                <span>Catalog</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="members.html">
+                <span class="material-symbols-outlined" data-icon="group">group</span>
+                <span>Members</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg bg-surface-container text-primary font-bold transition-all duration-200 ease-in-out" href="loans.html">
+                <span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+                <span>Loans</span>
+            </a>
+        </nav>
+        <div class="mt-auto space-y-base pt-md border-t border-outline-variant">
+            <button class="w-full bg-primary text-on-primary py-sm px-md rounded font-label-bold text-label-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity mb-md">
+                <span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                New Transaction
+            </button>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span>Settings</span>
+            </a>
+            <button onclick="handleLogout()" class="w-full flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-all duration-200 ease-in-out text-left cursor-pointer">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="w-full h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg">
+            <div class="flex items-center gap-md w-1/2">
+                <div class="relative w-full max-w-md">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+                    <input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary" placeholder="Rechercher un membre ou un ISBN..." type="text"/>
+                </div>
+            </div>
+            <div class="flex items-center gap-lg">
+                <div class="flex items-center gap-md">
+                    <button class="text-on-surface-variant hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                    </button>
+                    <button class="text-on-surface-variant hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" data-icon="help">help</span>
+                    </button>
+                </div>
+                <div class="flex items-center gap-sm pl-lg border-l border-outline-variant">
+                    <div class="text-right">
+                        <p class="font-label-bold text-label-bold text-primary">Jean Dupont</p>
+                        <p class="font-label-md text-label-md text-on-surface-variant">Librarian</p>
+                    </div>
+                    <img alt="Librarian Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDasqpz4GFjaCvKA0otA14pMA3yBbEGwlvjXXrLtcHXHmjgsFTINGU9N2u7x-IvsWv3WNFraETrFrR3bImoBNxahDgGrntQMN3ee9FsHnhsaNdzvy2j_CYAi-rJoQAZVEvflC4sQTugq3PVxNlMGj-TthT23iulsufB6BLMZjjUojd-J48RU55JE8Sa_kNtiVW5vCpYspnXJt6FH_sBbDGpXrP7bC_jGRNwZ25w0Nz8m8iNPRKxOPJNmkIRJRR3NzMWJYlRZfMnlvA"/>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="flex-1 overflow-y-auto p-lg space-y-lg bg-background">
+            <div class="flex justify-between items-end">
+                <div>
+                    <h1 class="font-display-lg text-display-lg text-on-background">Gestion des Prêts</h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Enregistrez de nouveaux emprunts et suivez les retours en temps réel.</p>
+                </div>
+                <div class="flex gap-sm">
+                    <div class="px-md py-base bg-surface-container rounded border border-outline-variant text-center">
+                        <p class="font-label-md text-label-md text-on-surface-variant">Prêts Actifs</p>
+                        <p class="font-headline-sm text-headline-sm font-bold text-primary">1,284</p>
+                    </div>
+                    <div class="px-md py-base bg-surface-container rounded border border-outline-variant text-center">
+                        <p class="font-label-md text-label-md text-on-surface-variant">Retards</p>
+                        <p class="font-headline-sm text-headline-sm font-bold text-error">42</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-12 gap-lg">
+
+                <div class="col-span-12 lg:col-span-5 flex flex-col gap-lg">
+
+                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+                        <h2 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+                            <span class="material-symbols-outlined text-primary" data-icon="add_box">add_box</span>
+                            Nouveau Prêt
+                        </h2>
+                        <form class="space-y-md" id="loanForm">
+                            <div>
+                                <label class="block font-label-bold text-label-bold mb-xs text-on-surface-variant">Sélectionner un Adhérent</label>
+                                <div class="relative">
+                                    <select class="w-full bg-background border border-outline-variant rounded p-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary appearance-none" id="memberSelect" onchange="checkQuota()">
+                                        <option disabled="" selected="" value="">Chargement des adhérents...</option>
+                                    </select>
+                                    <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+                                </div>
+                            </div>
+
+                            <div class="hidden bg-error-container text-on-error-container p-md rounded flex items-start gap-md animate-pulse" id="quotaAlert">
+                                <span class="material-symbols-outlined text-error" data-icon="warning" data-weight="fill">warning</span>
+                                <div class="font-body-sm text-body-sm">
+                                    <strong class="block mb-xs">Alerte : Quota dépassé</strong>
+                                    Cet adhérent a déjà emprunté 4 livres ou plus. Veuillez régulariser sa situation avant de procéder.
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block font-label-bold text-label-bold mb-xs text-on-surface-variant">Saisir l'ISBN du Livre</label>
+                                <div class="flex gap-base">
+                                    <input id="isbnInput" class="flex-1 bg-background border border-outline-variant rounded p-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary" placeholder="ex: 978-3-16-148410-0" type="text" required/>
+                                    <button class="bg-surface-container border border-outline-variant p-sm rounded hover:bg-surface-container-high transition-colors" type="button">
+                                        <span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-md">
+                                <div>
+                                    <label class="block font-label-bold text-label-bold mb-xs text-on-surface-variant">Date de retour prévue</label>
+                                    <input id="dueDateInput" class="w-full bg-background border border-outline-variant rounded p-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary" type="date" value="2026-06-16" required/>
+                                </div>
+                                <div class="flex items-end">
+                                    <button class="w-full h-[38px] bg-primary text-on-primary rounded font-label-bold text-label-bold hover:opacity-90 transition-opacity" type="submit">
+                                        Confirmer le prêt
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex shadow-sm">
+                        <div class="w-32 h-44 bg-surface-container flex-shrink-0 relative">
+                            <img alt="Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUGmzG9C7iiT8LB9HW0HGZ3KtfJvH1uolA1z9RtMxjI1-WSw2C-hbYU9PPpgSJygvw0Q8PikuEj8dycm8mQmhkOLGHldAebeXCU8Ve_1IuagbWxN8GrtDIi3oj8O8zSqaeU5eLf9G33n4AdwakeTDi2yAh0eVgoKj2RhV1SM9RqhEsfracGU0Oaun9aJh_p2Suv4CXptETKeZJeP9wbZ7ygD4-lmWquRXmMV_kupElih8BOfoIEK39lsTx1ncjVrtQ5GMqpwr6OEg"/>
+                            <div class="absolute inset-0 bg-black/5"></div>
+                        </div>
+                        <div class="p-md flex flex-col justify-center">
+                            <span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-bold w-fit mb-xs">DISPONIBLE</span>
+                            <h3 class="font-headline-sm text-headline-sm text-primary leading-tight">Le Petit Prince</h3>
+                            <p class="text-on-surface-variant font-label-md text-label-md mb-md">Antoine de Saint-Exupéry</p>
+                            <div class="flex gap-xl text-on-surface-variant">
+                                <div>
+                                    <p class="text-[10px] uppercase tracking-wider font-bold">Édition</p>
+                                    <p class="font-body-sm text-body-sm">Gallimard, 1943</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase tracking-wider font-bold">Emplacement</p>
+                                    <p class="font-body-sm text-body-sm">Rayon A-12</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col h-full">
+                        <div class="p-lg border-b border-outline-variant flex justify-between items-center">
+                            <h2 class="font-headline-sm text-headline-sm">Prêts Récents</h2>
+                            <div class="flex gap-sm">
+                                <button class="flex items-center gap-xs px-sm py-xs border border-outline-variant rounded font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                                    Filtrer
+                                </button>
+                                <button class="flex items-center gap-xs px-sm py-xs border border-outline-variant rounded font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                                    Exporter
+                                </button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto flex-1">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-surface-container-low sticky top-0 z-10">
+                                <tr>
+                                    <th class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant uppercase border-b border-outline-variant">Livre</th>
+                                    <th class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant uppercase border-b border-outline-variant">Adhérent</th>
+                                    <th class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant uppercase border-b border-outline-variant">Date Emprunt</th>
+                                    <th class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant uppercase border-b border-outline-variant">Statut</th>
+                                    <th class="px-md py-sm font-label-bold text-label-bold text-on-surface-variant uppercase border-b border-outline-variant text-right">Actions</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="loansTableBody" class="divide-y divide-outline-variant">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-md bg-surface-container-low flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+                            <span>Affichage de 1-10 sur 1 284</span>
+                            <div class="flex gap-xs">
+                                <button class="p-1 border border-outline-variant rounded hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+                                </button>
+                                <button class="px-2 border border-primary bg-primary text-on-primary rounded text-[11px] font-bold">1</button>
+                                <button class="px-2 border border-outline-variant rounded hover:bg-surface-container transition-colors text-[11px]">2</button>
+                                <button class="px-2 border border-outline-variant rounded hover:bg-surface-container transition-colors text-[11px]">3</button>
+                                <button class="p-1 border border-outline-variant rounded hover:bg-surface-container transition-colors">
+                                    <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const today = new Date();
+        today.setDate(today.getDate() + 14);
+        document.getElementById('dueDateInput').value = today.toISOString().split('T')[0];
+
+        loadMembersDropdown();
+        loadRecentLoans();
+
+
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitNewLoan();
+        });
+    });
+
+
+    function loadMembersDropdown() {
+        fetch('api/members')
+            .then(response => response.json())
+            .then(members => {
+                const select = document.getElementById('memberSelect');
+                select.innerHTML = '<option disabled selected value="">Rechercher par nom ou ID...</option>';
+
+                members.forEach(m => {
+                    let name = m.name || m.nom || "Inconnu";
+                    let id = m.id || 0;
+                    let currentLoans = m.currentLoans !== undefined ? m.currentLoans : (m.nbPrets || 0);
+                    let regNum = m.registrationNumber || m.matricule || id;
+
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.setAttribute('data-books', currentLoans);
+                    option.textContent = `${name} (ID: ${regNum})`;
+                    select.appendChild(option);
+                });
+            })
+            .catch(err => console.error("Erreur lors de la récupération des adhérents:", err));
+    }
+
+
+    function checkQuota() {
+        const select = document.getElementById('memberSelect');
+        const alertBox = document.getElementById('quotaAlert');
+        const selectedOption = select.options[select.selectedIndex];
+        const bookCount = parseInt(selectedOption.getAttribute('data-books')) || 0;
+
+        if (bookCount >= 4) {
+            alertBox.classList.remove('hidden');
+            alertBox.classList.add('flex');
+        } else {
+            alertBox.classList.remove('flex');
+            alertBox.classList.add('hidden');
+        }
+    }
+
+
+    function loadRecentLoans() {
+        fetch('api/loans')
+            .then(response => response.json())
+            .then(loans => {
+                const tableBody = document.querySelector("#loansTableBody");
+                tableBody.innerHTML = "";
+
+                loans.forEach(loan => {
+                    let id = loan.id || 0;
+                    let bookTitle = loan.bookTitle || loan.titreLivre || "Livre inconnu";
+                    let isbn = loan.isbn || "000-0-00-000000-0";
+                    let memberName = loan.memberName || loan.nomMembre || "Adhérent";
+                    let memberUid = loan.memberUid || loan.matriculeMembre || "ID";
+                    let loanDate = loan.loanDate || loan.dateEmprunt || "N/A";
+                    let status = loan.status || loan.statut || "En cours";
+
+                    let statusBadge = (status.toLowerCase() === 'retard' || status.toLowerCase() === 'overdue')
+                        ? `<span class="px-2 py-0.5 bg-error-container/30 text-error rounded-full text-[11px] font-bold uppercase">Retard</span>`
+                        : `<span class="px-2 py-0.5 bg-secondary-container/30 text-on-secondary-container rounded-full text-[11px] font-bold uppercase">En cours</span>`;
+
+                    let row = `
+                        <tr class="hover:bg-surface-container-low transition-colors">
+                            <td class="px-md py-md">
+                                <p class="font-label-bold text-label-bold text-primary">${bookTitle}</p>
+                                <p class="text-on-surface-variant font-code-sm text-code-sm">${isbn}</p>
+                            </td>
+                            <td class="px-md py-md">
+                                <p class="font-body-md text-body-md">${memberName}</p>
+                                <p class="text-on-surface-variant text-[11px]">ID: ${memberUid}</p>
+                            </td>
+                            <td class="px-md py-md font-body-md text-body-md">${loanDate}</td>
+                            <td class="px-md py-md">${statusBadge}</td>
+                            <td class="px-md py-md text-right">
+                                <button onclick="returnBook(${id})" class="text-primary hover:bg-surface-container p-1 rounded transition-colors" title="Enregistrer le retour">
+                                    <span class="material-symbols-outlined" data-icon="assignment_return">assignment_return</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(err => console.error("Erreur lors de la récupération des prêts récents:", err));
+    }
+
+
+    function submitNewLoan() {
+        const memberId = document.getElementById('memberSelect').value;
+        const isbn = document.getElementById('isbnInput').value;
+        const dueDate = document.getElementById('dueDateInput').value;
+
+        if(!memberId) { alert("Veuillez choisir un adhérent."); return; }
+
+        const payload = {
+            memberId: memberId,
+            isbn: isbn,
+            dueDate: dueDate
+        };
+
+        fetch('api/loans', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Échec de l'enregistrement du prêt");
+            return response.json();
+        })
+        .then(data => {
+
+            loadRecentLoans();
+            loadMembersDropdown();
+            document.getElementById('loanForm').reset();
+
+            const today = new Date();
+            today.setDate(today.getDate() + 14);
+            document.getElementById('dueDateInput').value = today.toISOString().split('T')[0];
+        })
+        .catch(err => alert("Erreur lors de la validation du prêt : " + err.message));
+    }
+
+
+    function returnBook(loanId) {
+        if(confirm("Confirmer le retour de cet ouvrage ?")) {
+            fetch(`api/loans/return?id=${loanId}`, { method: 'POST' })
+                .then(response => {
+                    if(!response.ok) throw new Error("Erreur lors du traitement du retour");
+                    loadRecentLoans();
+                    loadMembersDropdown();
+                })
+                .catch(err => alert(err.message));
+        }
+    }
+</script>
+<script>
+async function populateMemberSelect() {
+    const response = await fetch('api/members');
+    const members = await response.json();
+    const select = document.getElementById("memberSelect");
+
+    members.forEach(m => {
+        let option = document.createElement("option");
+        option.value = m.id;
+        option.text = m.name + " (" + m.matricule + ")";
+        select.appendChild(option);
+    });
+}
+async function handleLogout() {
+
+    if (!confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch('api/logout', {
+            method: 'POST'
+        });
+
+        if (response.ok) {
+
+            window.location.href = "login.html";
+        } else {
+            alert("Une erreur est survenue lors de la déconnexion.");
+        }
+    } catch (error) {
+        console.error("Erreur réseau lors de la déconnexion :", error);
+        alert("Impossible de joindre le serveur pour se déconnecter.");
+    }
+}</script>
+</body>
+</html>
