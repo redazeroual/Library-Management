@@ -55,3 +55,8 @@ Accès :
 Ouvrez votre navigateur sur http://localhost:8085/servlet/login.html.
 
 Note : N'oublie pas de remplacer votre-utilisateur dans l'URL par ton vrai nom d'utilisateur GitHub !
+
+
+⚠️ Notes importantes
+rotection par filtre : Le projet est conçu pour bloquer l'accès à toutes les pages tant que l'utilisateur n'est pas connecté. 
+Note de développement : Actuellement, cette fonctionnalité est **mise en commentaire** à la première ligne du fichier `AuthFilter.java` pour faciliter les tests. Pensez à la décommenter pour activer la sécurité réelle.
