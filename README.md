@@ -35,6 +35,7 @@ Cloner le dépôt :
 
 Bash
 git clone https://github.com/votre-utilisateur/library-management.git
+
 Configuration Base de données :
 
 Importez le script SQL (fourni dans le dossier /database) dans votre serveur MySQL.
